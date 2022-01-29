@@ -6,7 +6,7 @@ Widget defualtButton(
       double height = 40.0,
       double radius=0.0,
       Color color=Colors.blue,
-      required Function function,
+      required VoidCallback function,
       required String text,
     })
 {
@@ -18,7 +18,9 @@ Widget defualtButton(
         borderRadius: BorderRadius.circular(radius)
     ),
     child: MaterialButton(
-      onPressed: function(),
+      onPressed: (){
+        return function();
+      },
       child: Text(
         "${text.toUpperCase()}",
         style: TextStyle(
