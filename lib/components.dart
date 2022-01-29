@@ -37,19 +37,30 @@ Widget defualtButton(
 Widget defualtTextFormField(
 {
   required TextEditingController Text_editing_controller,
-  required IconData icon,
+  required IconData prefix_icon,
   required TextInputType text_input_type,
   required String label_text,
+  required FormFieldValidator FormValidator,
+  VoidCallback? onSubmitted,
+  VoidCallback? onChange,
+
 }
     ){
   return TextFormField(
     keyboardType: text_input_type,
     controller: Text_editing_controller,
     decoration: InputDecoration(
-      prefixIcon: Icon(icon),
+      prefixIcon: Icon(prefix_icon),
       labelText: "$label_text",
       border: OutlineInputBorder(),
     ),
+    validator: FormValidator,
+    onFieldSubmitted: (value){
+      return onSubmitted!();
+    },
+    onChanged: (value){
+      return onChange!();
+    },
 
   );
 
