@@ -9,6 +9,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController tec_email = new TextEditingController();
+  TextEditingController tec_userName = new TextEditingController();
 
   TextEditingController tec_password = new TextEditingController();
 
@@ -39,17 +40,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 15,
                 ),
-                TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  controller: tec_email,
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.email),
-                    labelText: "Email Address",
-                    border: OutlineInputBorder(),
-                  ),
-                  onFieldSubmitted: (value) {
-                    print("Value: ${value}");
-                  },
+                defualtTextFormField(
+                    Text_editing_controller: tec_email,
+                    icon: Icons.email,
+                    text_input_type: TextInputType.emailAddress,
+                    label_text: "Email Address"
+                ),
+                SizedBox(
+                  height: 15,
+                ),
+                defualtTextFormField(
+                    Text_editing_controller: tec_userName,
+                    icon: Icons.person_sharp,
+                    text_input_type: TextInputType.name,
+                    label_text: "Userame"
                 ),
                 SizedBox(
                   height: 15,
@@ -79,22 +83,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   height: 15,
                 ),
-                /////////////////////////////////
                 defualtButton(
-                    width: 150,
-                    color: Colors.red,
-                    radius: 20,
                     text: "login",
-                    function: (){
+                    function: () {
                       String emailValue = tec_email.text;
+                      String usernameValue = tec_userName.text;
                       String passwordValue = tec_password.text;
                       print(
-                          "EmailValue: ${emailValue} \nPasswordValue: ${passwordValue}"
+                          "EmailValue: ${emailValue} "
+                              "\nUsernameValue: ${usernameValue}"
+                              "\nPasswordValue: ${passwordValue} "
                       );
-                    }
-
-                ),
-                ///////////////////////////////////
+                    }),
                 SizedBox(
                   height: 15,
                 ),
@@ -117,22 +117,16 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 }
 /*
-                Container(
-                  width: double.infinity,
-                  height: 40,
-                  child: MaterialButton(
-                    onPressed: () {
-                      String emailValue = tec_email.text;
-                      String passwordValue = tec_password.text;
-                      print(
-                          "EmailValue: ${emailValue} \nPasswordValue: ${passwordValue}");
-                    },
-                    child: Text(
-                      "LOGIN",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
-                    ),
-                    color: Colors.blue.withOpacity(0.9),
+TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  controller: tec_email,
+                  decoration: InputDecoration(
+                    prefixIcon: Icon(Icons.email),
+                    labelText: "Email Address",
+                    border: OutlineInputBorder(),
                   ),
+                  onFieldSubmitted: (value) {
+                    print("Value: ${value}");
+                  },
                 ),
-
  */

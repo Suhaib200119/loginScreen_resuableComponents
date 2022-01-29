@@ -1,20 +1,20 @@
-import 'package:flutter/material.dart';
+ import 'package:flutter/material.dart';
 
 Widget defualtButton(
     {
       double width = double.infinity,
       double height = 40.0,
       double radius=0.0,
-      Color color=Colors.blue,
+      Color backgroundColor=Colors.blue,
+      bool uperCase=true,
       required VoidCallback function,
       required String text,
-    })
-{
+    }) {
   return Container(
     width: width,
     height: height,
     decoration: BoxDecoration(
-        color: color,
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(radius)
     ),
     child: MaterialButton(
@@ -22,13 +22,35 @@ Widget defualtButton(
         return function();
       },
       child: Text(
-        "${text.toUpperCase()}",
+        uperCase ? text.toUpperCase() : text,
         style: TextStyle(
           color: Colors.white,
           fontSize: 16,
         ),
       ),
     ),
+  );
+
+}
+
+
+Widget defualtTextFormField(
+{
+  required TextEditingController Text_editing_controller,
+  required IconData icon,
+  required TextInputType text_input_type,
+  required String label_text,
+}
+    ){
+  return TextFormField(
+    keyboardType: text_input_type,
+    controller: Text_editing_controller,
+    decoration: InputDecoration(
+      prefixIcon: Icon(icon),
+      labelText: "$label_text",
+      border: OutlineInputBorder(),
+    ),
+
   );
 
 }
