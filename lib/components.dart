@@ -41,8 +41,8 @@ Widget defualtTextFormField(
   required TextInputType text_input_type,
   required String label_text,
   required FormFieldValidator FormValidator,
-  VoidCallback? onSubmitted,
-  VoidCallback? onChange,
+  Function? onSubmitted,
+  Function? onChange,
 
 }
     ){
@@ -56,10 +56,10 @@ Widget defualtTextFormField(
     ),
     validator: FormValidator,
     onFieldSubmitted: (value){
-      return onSubmitted!();
+      return onSubmitted!(value);
     },
     onChanged: (value){
-      return onChange!();
+      return onChange!(value);
     },
 
   );
